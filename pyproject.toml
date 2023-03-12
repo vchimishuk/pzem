@@ -1,0 +1,10 @@
+[project]
+name = "pzem"
+description = "PZEM004T power meter client"
+version = "0.1.0"
+authors = [{name = "Viacheslav Chimishuk", email = "vchimishuk@yandex.ru"}]
+dependencies = ["python-pyserial"]
+
+[build-system]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core"]

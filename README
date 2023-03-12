@@ -1,0 +1,28 @@
+NAME
+    pzem is a PZEM004T power meter client
+
+AUTHORS
+    Viacheslav Chimishuk <vchimishuk@yandex.ru>
+
+COPYING
+    This programm is released under the GNU General Public License version 3 or later, which is
+    distributed in the COPYING file. You should have received a copy of the GNU General Public License along with
+    this program.  If not, see <http://www.gnu.org/licenses/>.
+
+USAGE
+    $ pzem --stats
+    voltage: 215.2
+    current: 0.129
+    power: 15.1
+    energy: 1
+    frequency: 50.0
+    factor: 0.54
+    alarm: false
+
+    Current distribution also includes Python package.
+    Python package usage example:
+    >>> import pzem
+    >>> p = pzem.Pzem('/dev/ttyUSB0')
+    >>> p.stats()
+    >>> {'voltage': 215.2, 'current': 0.129, 'power': 15.1, 'energy': 1,
+    ... 'frequency': 50.0, 'factor': 0.54, 'alarm': False}

@@ -1,0 +1,28 @@
+# Maintainer: Viacheslav Chimishuk <vchimishuk@yandex.ru>
+
+pkgname=pzem
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="PZEM004T power meter client"
+arch=('any')
+url="https://github.com/vchimishuk/pzem"
+license=('GPL3')
+depends=('python-pyserial')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+
+prepare() {
+    cp -r ../../pzem .
+    cp -r ../../bin .
+    cp ../../pyproject.toml .
+}
+
+build() {
+    python -m build --wheel
+}
+
+package() {
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    install -g 0 -o 0 -d $pkgdir/usr/bin
+    install bin/pzem $pkgdir/usr/bin
+}

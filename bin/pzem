@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+
+import pzem
+import argparse
+
+
+ap = argparse.ArgumentParser(description='PZEM004T power meter client')
+ap.add_argument('-d', '--device', metavar='DEV', default='/dev/ttyUSB0',
+                help='serial device file')
+ap.add_argument('-r', '--reset', action='store_const', const=True,
+                help='reset energy counter')
+ap.add_argument('-s', '--stats', action='store_const', const=True,
+                help='display measured values')
+args = ap.parse_args()
+
+p = pzem.Pzem(args.device)
+try:
+    if args.reset:
+        p.reset()
+
+    if not args.reset:
+        stats = p.stats()
+        print('voltage: {}'.format(stats['voltage']))
+        print('current: {}'.format(stats['current']))
+        print('power: {}'.format(stats['power']))
+        print('energy: {}'.format(stats['energy']))
+        print('frequency: {}'.format(stats['frequency']))
+        print('factor: {}'.format(stats['factor']))
+        print('alarm: {}'.format(str(stats['alarm']).lower()))
+finally:
+    p.close()

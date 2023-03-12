@@ -1,0 +1,12 @@
+Source: pzem
+Section: main
+Priority: optional
+Maintainer: Viacheslav Chimishuk <vchimishuk@yandex.ru>
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.4
+Homepage: https://github.com/vchimishuk/pzem
+
+Package: pzem
+Architecture: all
+Depends: python3-serial
+Description: PZEM004T power meter client
